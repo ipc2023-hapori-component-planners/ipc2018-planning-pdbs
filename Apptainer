@@ -1,0 +1,61 @@
+Bootstrap: docker
+From: ubuntu:xenial
+
+%files
+    . /planner
+
+%post
+
+    ## The "%post"-part of this script is called after the container has
+    ## been created with the "%setup"-part above and runs "inside the
+    ## container". Most importantly, it is used to install dependencies
+    ## and build the planner. Add all commands that have to be executed
+    ## once before the planner runs in this part of the script.
+
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get -y install --no-install-recommends cmake g++ make python autotools-dev automake gcc g++-multilib
+
+    ## Build your planner
+    cd /planner
+    ./build.py release64 -j6
+
+    ## Strip binaries.
+    strip --strip-all /planner/builds/release64/bin/downward
+
+    ## Remove packages unneeded for running the planner.
+    apt -y autoremove cmake g++ make autotools-dev automake gcc g++-multilib
+    rm -rf /var/lib/apt/lists/*
+
+    ## Only keep essential binaries.
+    mkdir -p /compiled-planner/builds/release64
+    mv /planner/driver /planner/fast-downward.py /compiled-planner
+    mv /planner/builds/release64/bin /compiled-planner/builds/release64
+    rm -rf /planner
+    mv /compiled-planner /planner
+
+%runscript
+    ## The runscript is called whenever the container is used to solve
+    ## an instance.
+
+    DOMAINFILE=$1
+    PROBLEMFILE=$2
+    PLANFILE=$3
+
+    ## Call your planner.
+    /planner/fast-downward.py \
+        --build=release64 \
+        --plan-file $PLANFILE \
+        $DOMAINFILE \
+        $PROBLEMFILE \
+        --search "astar(cpdbs_symbolic(genetic_ss(use_ucb=true,num_episodes=10000000,num_collections=1,pdb_factory=symbolic,genetic_time_limit=900,time_limit=1.0,create_perimeter=true,use_first_goal_vars=false,use_norm_dist=true)))"
+
+## Update the following fields with meta data about your submission.
+## Please use the same field names and use only one line for each value.
+%labels
+Name        Planning-pdb-mcts
+Description Forward search with A* and the Complementary PDB Creation Heuristic
+Authors     Ionut Moraru <ionut.moraru@kcl.ac.uk> and Stefan Edelkamp <stefan.edelkamp@kcl.ac.uk>
+SupportsDerivedPredicates yes
+SupportsQuantifiedPreconditions no
+SupportsQuantifiedEffects no

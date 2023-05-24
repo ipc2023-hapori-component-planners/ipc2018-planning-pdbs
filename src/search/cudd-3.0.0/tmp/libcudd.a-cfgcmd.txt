@@ -1,0 +1,1 @@
+cmd='aclocal;&&;automake;--add-missing;&&;autoconf;&&;/Users/michaelkatz/software/FD/IPC2022/planner19/planners/ipc2018-opt-planning-pdbs/src/search/cudd-3.0.0/configure;--enable-obj;--build=i686-pc-linux-gnu;CFLAGS=-m64 -Wall -Wextra -g -O3;CXXFLAGS=-m64 -Wall -Wextra -std=c++0x -g -O3;LDFLAGS=-m64;&&;make;clean'

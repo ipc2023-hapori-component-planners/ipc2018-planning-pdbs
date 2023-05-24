@@ -1,0 +1,195 @@
+INFO     Running translator.
+INFO     translator input: ['/home/santiago/AI_PROGRAMS/downward-benchmarks/barman-opt11-strips/domain.pddl', '/home/santiago/AI_PROGRAMS/downward-benchmarks/barman-opt11-strips/pfile01-004.pddl']
+INFO     translator arguments: []
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     callstring: /usr/bin/python /home/santiago/AI_PROGRAMS/temp/nonagnosticpdbs/builds/release32/bin/translate/translate.py /home/santiago/AI_PROGRAMS/downward-benchmarks/barman-opt11-strips/domain.pddl /home/santiago/AI_PROGRAMS/downward-benchmarks/barman-opt11-strips/pfile01-004.pddl
+Parsing...
+Parsing: [0.000s CPU, 0.005s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.006s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 115 rules.
+Computing model... [0.020s CPU, 0.014s wall-clock]
+593 relevant atoms
+673 auxiliary atoms
+1266 final queue length
+2072 total queue pushes
+Completing instantiation... [0.020s CPU, 0.023s wall-clock]
+Instantiating: [0.050s CPU, 0.047s wall-clock]
+Computing fact groups...
+Finding invariants...
+24 initial candidates
+Finding invariants: [0.010s CPU, 0.011s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+59 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.010s CPU, 0.013s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.010s CPU, 0.002s wall-clock]
+Translating task: [0.030s CPU, 0.026s wall-clock]
+592 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+3 propositions removed
+Detecting unreachable propositions: [0.020s CPU, 0.011s wall-clock]
+Translator variables: 62
+Translator derived variables: 0
+Translator facts: 133
+Translator goal facts: 3
+Translator mutex groups: 8
+Translator total mutex groups size: 30
+Translator operators: 358
+Translator axioms: 0
+Translator task size: 3454
+Translator peak memory: 28432 KB
+Writing output... [0.000s CPU, 0.004s wall-clock]
+Done! [0.110s CPU, 0.109s wall-clock]
+INFO     Running preprocessor (release32).
+INFO     preprocessor input: output.sas
+INFO     preprocessor arguments: []
+INFO     preprocessor time limit: None
+INFO     preprocessor memory limit: None
+INFO     callstring: /home/santiago/AI_PROGRAMS/temp/nonagnosticpdbs/builds/release32/bin/preprocess < output.sas
+Building causal graph...
+The causal graph is not acyclic.
+62 variables of 62 necessary
+5 of 8 mutex groups necessary.
+358 of 358 operators necessary.
+0 of 0 axiom rules necessary.
+Initializing mutex computation...
+Mutex computation initialized with 133 fluents.
+iteration for mutex detection and operator pruning
+Initialize m_index fw
+Initialized mvalues forward: reached=3844, notReached=13631, spurious=214
+Initialize m_ops fw
+Computing mutexes...
+Mutex computation finished with reached=17001, notReached=474, spurious=214
+64 operators are spurious because were not triggered
+H^2 mutexes added fw: 474, unreachable: 0
+0 of 294 operators detected as spurious
+iteration for mutex detection and operator pruning
+Initialize m_index bw
+Init values regression
+Initialized mvalues backward: reached=9678, notReached=7323, spurious=688
+Initialize m_ops bw
+Computing mutexes...
+Mutex computation finished with reached=17001, notReached=0, spurious=688
+0 operators are spurious because were not triggered
+H^2 mutexes added bw: 0, unreachable: 0
+0 of 294 operators detected as spurious
+Total mutex and disambiguation time: 0.020461 iterations: 2
+242 of 242 mutex groups necessary.
+294 of 358 operators necessary.
+0 of 0 axiom rules necessary.
+Change id of operators: 294
+Change id of mutexes
+Change id of goals
+Change id of initial state
+Remove unreachable facts from variables: 62
+242 of 242 mutex groups necessary.
+294 of 294 operators necessary.
+0 of 0 axiom rules necessary.
+Updating causal graph and pruning unnecessary facts
+62 variables of 62 of 62 necessary
+The causal graph is not acyclic.
+62 variables of 62 necessary
+242 of 242 mutex groups necessary.
+294 of 294 operators necessary.
+0 of 0 axiom rules necessary.
+Building domain transition graphs...
+solveable in poly time 0
+Building successor generator...
+Preprocessor variables: 62
+Preprocessor facts: 133
+Preprocessor derived variables: 0
+Preprocessor operators: 294
+Preprocessor mutex groups: 242
+Preprocessor task size: 3209
+Writing output...
+Preprocessor peak memory: 2536 KB
+done
+INFO     Running search (release32).
+INFO     search input: output
+INFO     search arguments: ['--search', "astar(cpdbs_symbolic(genetic_ss(num_episodes=120,num_collections=5,pdb_type_candidates=symbolic,pdb_type_selected=symbolic)))'"]
+INFO     search time limit: None
+INFO     search memory limit: None
+INFO     search executable: /home/santiago/AI_PROGRAMS/temp/nonagnosticpdbs/builds/release32/bin/downward
+INFO     callstring: /home/santiago/AI_PROGRAMS/temp/nonagnosticpdbs/builds/release32/bin/downward --search 'astar(cpdbs_symbolic(genetic_ss(num_episodes=120,num_collections=5,pdb_type_candidates=symbolic,pdb_type_selected=symbolic)))'"'"'' --internal-plan-file sas_plan < output
+reading input... [t=4.21e-05s]
+done reading input! [t=0.00466081s]
+packing state variables...done! [t=0.00467141s]
+Variables: 62
+Facts: 133
+Bytes per state: 12
+Building successor generator...done! [t=0.00554015s]
+done initalizing global data [t=0.0055429s]
+building causal graph...done! [t=0.000717624s]
+Sym variable order: 17 16 14 18 13 15 32 59 33 24 28 60 22 50 21 52 51 41 53 39 42 40 31 23 45 46 49 48 56 43 47 2 5 44 27 37 35 55 38 57 20 54 36 58 19 61 25 34 26 29 30 10 12 11 7 9 8 0 3 4 1 6 
+Initializing Symbolic Variables
+Num variables: 62 => 67
+Initialize Symbolic Manager(134, 119402, 16000000, 0)
+Generating binary variables
+Generating predicate BDDs: 62
+62
+Symbolic Variables... Done.
+TRs cost=1 (1)
+TRs cost=10 (1)
+Sym variable order: 0 1 6 3 4 8 14 9 7 15 13 26 24 34 30 33 60 19 21 58 52 36 57 53 35 40 39 23 46 5 2 47 48 56 43 49 45 44 31 27 20 38 37 55 42 51 41 54 22 50 25 59 61 29 32 28 11 12 10 18 16 17 
+Initializing Symbolic Variables
+Num variables: 62 => 67
+Initialize Symbolic Manager(134, 119402, 16000000, 0)
+Generating binary variables
+Generating predicate BDDs: 62
+62
+Symbolic Variables... Done.
+TRs cost=1 (1)
+TRs cost=10 (1)
+Sym variable order: 14 13 8 15 7 9 24 33 26 34 60 30 21 52 58 19 53 39 57 35 40 36 23 31 45 46 49 43 56 48 47 5 2 44 27 41 37 51 42 55 22 50 38 54 20 59 32 25 61 28 29 16 18 17 10 12 11 4 0 3 6 1 
+Initializing Symbolic Variables
+Num variables: 62 => 67
+Initialize Symbolic Manager(134, 119402, 16000000, 0)
+Generating binary variables
+Generating predicate BDDs: 62
+62
+Symbolic Variables... Done.
+TRs cost=1 (1)
+TRs cost=10 (1)
+Setting num_collections to 1 no matter the input!
+	current_episode:0,pdb_max_size:20000000,candidate initial h:5
+no initial heuristic yet
+initial best_patter==_collection:
+best_patterns:[ 27 45 46 47 60 ]
+best_patterns:[ 2 61 ]
+best_patterns:[ 18 19 22 38 42 43 49 55 56 58 59 ]
+best_patterns:[ ]
+best_patterns:[ ]
+	best_heuristic initial h:2
+	current_episode:111,pdb_max_size:20000000,candidate initial h:3
+timer:,1.34675,best heuristic initial value raised to:2
+Running SS sampling again, SS states left less than 5K
+avg probe:5.61306e+45
+avg probe deviation:1.68392e+46
+SS_states.size:4745
+current_episode:111,best_heuristics_count:1,new sampled_states batch
+time:,1.8942,starting sorting SS states,size:4745
+current_episode:,111,raised_states:,89,sampled_states:,100,ratio:0.89
+time:,1.90116,bin_packed:,0,adding1 best_heuristic,episode:,111,collection:,0,new raised_ratio:,0.89,actual_states_ratio:,0.89,total_nodes:2.80653e+48,pruned_states:2.80601e+48,fitness:,3.91,sampled_states:,100,initial_value:,3,skip_sampling:,0,best_heur_dead_ends:,0,best_heuristics count:1
+DEBUG ME, just added candidate_heur with initial h value:3but best_value for initial state is calculated as 2!!!!
+Peak memory: 641180 KB
+Command '['/home/santiago/AI_PROGRAMS/temp/nonagnosticpdbs/builds/release32/bin/downward', '--search', "astar(cpdbs_symbolic(genetic_ss(num_episodes=120,num_collections=5,pdb_type_candidates=symbolic,pdb_type_selected=symbolic)))'", '--internal-plan-file', 'sas_plan']' returned non-zero exit status 1
